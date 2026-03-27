@@ -1,0 +1,7 @@
+id_raw,nombre,email,fecha_registro,pais,plan_suscripcion,fecha_nacimiento,genero
+1,Ana García,ana@mail.com,2024-01-15,ES,premium,1990-03-22,F
+2,John Smith,john@mail.com,2024-01-16,GB,free,,
+3,María López,,2024-01-16,ES,premium,1985-07-11,F
+4,,pedro@mail.com,2024-01-17,ES,free,,
+5,Luca Rossi,luca@mail.com,2024-01-17,IT,premium,1993-11-05,M
+6,Sara Kim,sara@mail.com,,KR,free,,

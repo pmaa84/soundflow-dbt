@@ -4,10 +4,10 @@ config-version: 2
 
 profile: 'soundflow'
 
-model-paths: ["models"]
+model-paths: ["soundflow_dbt/soundflow_dbt/models"]
 seed-paths: ["seeds"]
-test-paths: ["tests"]
-macro-paths: ["macros"]
+test-paths: ["soundflow_dbt/soundflow_dbt/tests"]
+macro-paths: ["soundflow_dbt/soundflow_dbt/macros"]
 
 target-path: "target"
 clean-targets: ["target", "dbt_packages"]

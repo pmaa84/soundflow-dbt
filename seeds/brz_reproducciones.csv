@@ -1,0 +1,8 @@
+id_raw,id_usuario,id_cancion,ts_inicio,segundos_escuchados,dispositivo,pais_sesion,playlist_id
+9001,1,101,2024-02-01 08:12:33,200,mobile,ES,
+9002,2,103,2024-02-01 09:44:01,120,web,GB,
+9003,1,102,2024-02-01 10:05:17,354,mobile,ES,PL_001
+9004,,105,2024-02-01 11:30:00,228,smart_tv,,
+9005,5,101,2024-02-01 12:00:55,200,mobile,IT,PL_002
+9006,3,106,2024-02-01 13:15:09,100,web,ES,
+9007,1,104,2024-02-01 14:00:00,245,mobile,,
