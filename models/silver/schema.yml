@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: stg_usuario
+    description: "Usuarios limpios desde Bronze. Incluye fila especial Anónimo (id=0)."
+    columns:
+      - name: email
+        tests:
+          - not_null
+          - unique
+      - name: plan_suscripcion
+        tests:
+          - accepted_values:
+              values: ['free', 'premium']
+
+  - name: stg_cancion
+    description: "Canciones limpias. Filas con titulo NULL descartadas."
+    columns:
+      - name: titulo
+        tests:
+          - not_null
+      - name: nombre_artista
+        tests:
+          - not_null
+
+  - name: stg_reproduccion
+    description: "Eventos de reproducción. id_usuario 0 = anónimo."
+    columns:
+      - name: ts_inicio
+        tests:
+          - not_null
+      - name: segundos_escuchados
+        tests:
+          - not_null
+
+  - name: dim_tiempo
+    description: "Dimensión tiempo generada sintéticamente."
+    columns:
+      - name: id_tiempo
+        tests:
+          - not_null
+          - unique
+      - name: fecha
+        tests:
+          - not_null
+
+  - name: dim_cancion
+    description: "Dimensión canción desnormalizada con artista y álbum."
+    columns:
+      - name: titulo
+        tests:
+          - not_null
+
+  - name: dim_usuario
+    description: "Dimensión usuario con segmento de edad calculado."
+    columns:
+      - name: id_usuario_silver
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_reproducciones
+    description: "Tabla de hechos. Grano: un evento de reproducción."
+    columns:
+      - name: id_reproduccion_raw
+        tests:
+          - not_null
+      - name: id_tiempo
+        tests:
+          - not_null
+      - name: segundos_escuchados
+        tests:
+          - not_null

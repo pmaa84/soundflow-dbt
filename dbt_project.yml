@@ -1,0 +1,25 @@
+name: 'soundflow'
+version: '1.0.0'
+config-version: 2
+
+profile: 'soundflow'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  soundflow:
+    bronze:
+      +schema: bronze
+      +materialized: view        # Bronze = vistas sobre las tablas raw
+    silver:
+      +schema: silver
+      +materialized: table       # Silver = tablas limpias persistidas
+    gold:
+      +schema: gold
+      +materialized: table       # Gold = tablas dimensionales persistidas

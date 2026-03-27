@@ -1,0 +1,45 @@
+version: 2
+
+seeds:
+  - name: brz_usuarios
+    description: "Datos Bronze de usuarios tal como llegan del CRM."
+    config:
+      schema: bronze
+      column_types:
+        id_raw: INT64
+        nombre: STRING
+        email: STRING
+        fecha_registro: DATE
+        pais: STRING
+        plan_suscripcion: STRING
+        fecha_nacimiento: DATE
+        genero: STRING
+
+  - name: brz_canciones
+    description: "Datos Bronze de canciones tal como llegan del catálogo musical."
+    config:
+      schema: bronze
+      column_types:
+        id_raw: INT64
+        titulo: STRING
+        artista_nombre: STRING
+        album_nombre: STRING
+        duracion_seg: INT64
+        genero_musical: STRING
+        fecha_lanzamiento: DATE
+        explicit: STRING
+        sello_discografico: STRING
+
+  - name: brz_reproducciones
+    description: "Datos Bronze de eventos de reproducción tal como llegan de la app."
+    config:
+      schema: bronze
+      column_types:
+        id_raw: INT64
+        id_usuario: INT64
+        id_cancion: INT64
+        ts_inicio: TIMESTAMP
+        segundos_escuchados: INT64
+        dispositivo: STRING
+        pais_sesion: STRING
+        playlist_id: STRING
