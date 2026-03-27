@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    description: "Datos crudos tal como llegan de las fuentes. Nunca se modifican."
+    tables:
+      - name: brz_usuarios
+        description: "Altas de usuarios desde la app y la web."
+        columns:
+          - name: id_raw
+            description: "ID de la fila raw"
+          - name: nombre
+            description: "Puede ser NULL si registro desde red social"
+          - name: email
+            description: "Campo obligatorio. Fila descartada si NULL"
+          - name: fecha_registro
+            description: "Puede ser NULL por error de captura"
+          - name: pais
+          - name: plan_suscripcion
+          - name: fecha_nacimiento
+            description: "Campo opcional del perfil"
+          - name: genero
+            description: "Campo opcional del perfil"
+
+      - name: brz_canciones
+        description: "Feed de canciones de los distribuidores."
+        columns:
+          - name: id_raw
+          - name: titulo
+            description: "NULL = error crítico del feed. Fila descartada en Silver"
+          - name: artista_nombre
+          - name: album_nombre
+          - name: duracion_seg
+          - name: genero_musical
+          - name: fecha_lanzamiento
+          - name: explicit
+          - name: sello_discografico
+            description: "Campo opcional del distribuidor"
+
+      - name: brz_reproducciones
+        description: "Stream de eventos de reproducción en tiempo casi real."
+        columns:
+          - name: id_raw
+          - name: id_usuario
+            description: "NULL = reproducción anónima. Se sustituye por 0 en Silver"
+          - name: id_cancion
+          - name: ts_inicio
+          - name: segundos_escuchados
+          - name: dispositivo
+          - name: pais_sesion
+            description: "NULL = contexto geográfico no disponible"
+          - name: playlist_id
+            description: "NULL = reproducción directa (válido por diseño)"
